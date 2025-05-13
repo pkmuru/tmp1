@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compact Transaction Form - Fluent UI</title>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@fluentui/web-components@2.6.1/dist/web-components.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div id="messageDisplay"></div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h2>Transaction Details</h2>
+        <fluent-button appearance="stealth" aria-label="Close" class="close-button" onclick="displayGeneralMessage('Close button clicked. Implement actual close logic if needed.', 'info');">
+            <i class="bi bi-x-lg"></i>
+        </fluent-button>
+    </div>
+
+    <div class="alert-custom" id="missingFieldsAlert" role="status">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <div>
+            <ul class="list-unstyled" id="missingFieldsList">
+                <li>Please fill in all mandatory fields correctly.</li>
+            </ul>
+        </div>
+    </div>
+
+    <form id="transactionForm">
+        <div class="form-section">
+            <div class="form-group">
+                <label for="clientAccount">Client account <span class="required-field-indicator">*</span></label>
+                <fluent-select id="clientAccount" required>
+                    </fluent-select>
+                <div id="clientAccountError" class="field-error-text"></div>
+            </div>
+            <div class="form-group">
+                <label for="payeeAccount">Payee account <span class="required-field-indicator">*</span></label>
+                <fluent-select id="payeeAccount" required>
+                    </fluent-select>
+                <div id="payeeAccountError" class="field-error-text"></div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <label class="label-like">Transaction <span class="required-field-indicator">*</span></label>
+            <fluent-radio-group name="transactionNature" id="transactionNatureGroup" value="single">
+                <fluent-radio value="single" checked>Single</fluent-radio>
+                <fluent-radio value="periodic">Periodic</fluent-radio>
+            </fluent-radio-group>
+        </div>
+
+        <div class="form-section">
+            <div class="form-group">
+                <label for="transactionTypeSelect">Type <span class="required-field-indicator">*</span></label>
+                <fluent-select id="transactionTypeSelect" required>
+                     </fluent-select>
+                <div id="transactionTypeSelectError" class="field-error-text"></div>
+            </div>
+            <div class="row no-gutters" style="display: flex; gap: 16px; margin-bottom: 8px;">
+                <div style="flex: 1;">
+                    <label for="amount">Amount <span class="required-field-indicator">*</span></label>
+                    <fluent-text-field type="number" id="amount" value="0.00" step="0.01" min="0" required placeholder="0.00" style="text-align: right;"></fluent-text-field>
+                    <div id="amountError" class="field-error-text"></div>
+                </div>
+                <div style="flex: 1;">
+                    <label for="currency">Currency <span class="required-field-indicator">*</span></label>
+                    <fluent-select id="currency" required>
+                        </fluent-select>
+                    <div id="currencyError" class="field-error-text"></div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between small-text financial-details" style="display: flex; justify-content: space-between;">
+                <div>Cash available: <strong style="color: #333;">$75,568.42</strong></div>
+                <div>Withdrawal limit: <strong style="color: #333;">$100,000.00</strong></div>
+            </div>
+            <fluent-checkbox id="waiveFee" style="margin-top: 12px;">Waive 25.00 USD client fee</fluent-checkbox>
+        </div>
+
+        <div class="form-section">
+            <div class="row no-gutters" style="display: flex; gap: 16px;">
+                <div style="flex: 1;">
+                    <label for="datePickerInput">Date <span class="required-field-indicator">*</span></label>
+                    <input type="date" id="datePickerInput" required class="fluent-input-like">
+                    <div id="datePickerInputError" class="field-error-text"></div>
+                </div>
+                <div style="flex: 1;">
+                    <label for="reasonForDisbursement">Reason for Disbursement <span class="required-field-indicator">*</span></label>
+                    <fluent-select id="reasonForDisbursement" required>
+                        </fluent-select>
+                    <div id="reasonForDisbursementError" class="field-error-text"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="internalMemo">Internal Memo</label>
+            <fluent-text-area id="internalMemo" placeholder="Enter your memo (optional)" resize="both" style="min-height: 60px;"></fluent-text-area>
+        </div>
+
+        <div class="form-group border-top pt-2 mt-2" style="border-top: 1px solid #e0e0e0; padding-top: 12px; margin-top:12px;">
+            <p class="small-text mb-1" style="margin-bottom: 4px;">Call client first to confirm transfer (as per <fluent-anchor href="#" appearance="hypertext">goto/BGaP</fluent-anchor> transfer procedures)</p>
+            <div class="phone-input-group">
+                <fluent-select id="clientPhoneNumber">
+                    </fluent-select>
+                <fluent-button appearance="outline" onclick="displayGeneralMessage('Call functionality would be implemented here.', 'info');">
+                    Call
+                </fluent-button>
+            </div>
+        </div>
+
+        <div> 
+            <fluent-checkbox id="confirmCall" required style="margin-bottom: 4px;">
+                I confirm that I have called the client, read the email, and verified all the above information. <span class="required-field-indicator">*</span>
+            </fluent-checkbox>
+            <div id="confirmCallError" class="confirm-error-message">
+                <i class="bi bi-x-circle-fill"></i> Please confirm
+            </div>
+        </div>
+
+        <div class="form-group action-buttons" style="margin-top: 20px;">
+            <fluent-button type="submit" appearance="accent">Continue</fluent-button>
+            <fluent-button appearance="neutral">Dismiss</fluent-button> </div>
+        <p class="small-text text-center" style="text-align: center; margin-top: 8px;">Dismissed action cannot be recalled.</p>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js" defer></script> 
+</body>
+</html>
