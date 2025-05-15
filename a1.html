@@ -19,14 +19,25 @@
         
         <div class="form-container">
             <!-- Loading indicator -->
-            <div id="loadingIndicator" class="text-center my-4">
+            <div id="loadingIndicator" class="text-center my-3">
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 <p class="mt-2">Loading form data...</p>
             </div>
             
-                        
+            <!-- API Error Alert -->
+            <div class="alert alert-danger d-flex align-items-start mb-3" id="apiErrorAlert" style="display: none;">
+                <div class="warning-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div>
+                    <p class="mb-0" id="apiErrorMessage">
+                        Unable to load form data. Please try again later.
+                    </p>
+                </div>
+            </div>
+            
             <!-- Validation Alert -->
             <div class="alert alert-warning d-flex align-items-start mb-3" id="validationAlert" style="display: none;">
                 <div class="warning-icon">
@@ -87,8 +98,8 @@
                                 <input type="text" class="form-control form-control-sm text-end" id="amount" value="0.00" required>
                             </div>
                             <div class="balance-info">
-                                <div>Cash available <span id="cashAvailable">$0.00</span></div>
-                                <div>Withdrawal limit <span id="withdrawalLimit">$0.00</span></div>
+                                <div>Cash available <span id="cashAvailable">$75,568.42</span></div>
+                                <div>Withdrawal limit <span id="withdrawalLimit">$100,000.00</span></div>
                             </div>
                         </div>
                     </div>
@@ -133,7 +144,7 @@
                 
                 <div class="form-group">
                     <label for="memo" class="form-label">Internal memo</label>
-                    <textarea class="form-control form-control-sm memo-field" id="memo" rows="3" placeholder="Enter your memo"></textarea>
+                    <textarea class="form-control form-control-sm memo-field" id="memo" rows="2" placeholder="Enter your memo"></textarea>
                 </div>
                 
                 <div class="form-group">
