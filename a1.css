@@ -1,5 +1,5 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Frutiger", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     color: #333;
     background-color: #f8f9fa;
   }
@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 12px 20px;
     border-bottom: 1px solid #e9ecef;
   }
   .header h2 {
@@ -32,32 +32,37 @@ body {
     color: #6c757d;
   }
   .form-container {
-    padding: 20px;
+    padding: 15px;
   }
   .alert-warning {
     background-color: #fff8ed;
     border-color: #ffecd1;
     color: #333;
     border-left: 4px solid #ff9800;
+    padding: 8px 12px;
+    margin-bottom: 12px;
   }
   .alert-danger {
     background-color: #fff0f0;
     border-color: #ffccd1;
     color: #333;
     border-left: 4px solid #dc3545;
+    padding: 8px 12px;
+    margin-bottom: 12px;
   }
   .warning-icon {
     color: #ff9800;
-    font-size: 1.5rem;
-    margin-right: 10px;
+    font-size: 1.25rem;
+    margin-right: 8px;
   }
   .warning-icon .fa-exclamation-circle {
     color: #dc3545;
   }
   .form-label {
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+    color: #666;
   }
   .form-label.required::after {
     content: " *";
@@ -65,16 +70,20 @@ body {
   }
   .form-select,
   .form-control {
-    font-size: 0.9rem;
-    padding: 0.375rem 0.75rem;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+    min-height: 32px;
   }
   .form-check-input {
-    margin-top: 0.3rem;
+    margin-top: 0.2rem;
+  }
+  .form-check-label {
+    font-size: 0.85rem;
   }
   .info-text {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #6c757d;
-    margin-top: 0.25rem;
+    margin-top: 0.15rem;
   }
   .amount-container {
     position: relative;
@@ -86,17 +95,19 @@ body {
   .balance-info {
     display: flex;
     justify-content: space-between;
-    margin-top: 0.25rem;
-    font-size: 0.8rem;
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+    color: #666;
   }
   .balance-info span {
     font-weight: 600;
   }
   .memo-field {
     resize: none;
+    min-height: 60px;
   }
   .confirmation-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-left: 5px;
   }
   .btn-primary {
@@ -114,17 +125,17 @@ body {
   }
   .dismiss-note {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #6c757d;
-    margin-top: 5px;
+    margin-top: 3px;
   }
   .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
   .call-section {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
   .call-section select {
     flex-grow: 1;
@@ -161,10 +172,11 @@ body {
     -webkit-appearance: none;
     color: #333;
     font-family: inherit;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     background: white;
+    min-height: 32px;
   }
   
   input[type="date"]:focus {
@@ -187,30 +199,88 @@ body {
   .invalid-feedback {
     display: none;
     width: 100%;
-    margin-top: 0.25rem;
-    font-size: 0.875em;
+    margin-top: 0.15rem;
+    font-size: 0.75em;
     color: #dc3545;
   }
   
   /* Update button styling for small buttons */
   .btn-sm {
     padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     border-radius: 0.2rem;
+    min-height: 32px;
+  }
+  
+  /* Make sure the alert is hidden by default */
+  #validationAlert {
+    display: none !important;
   }
   
   /* Loading indicator */
   #loadingIndicator {
-    padding: 30px 0;
+    padding: 20px 0;
   }
   
   #loadingIndicator .spinner-border {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
   }
   
   #loadingIndicator p {
     color: #6c757d;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  
+  /* Compact row spacing */
+  .row {
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+  
+  .row > [class^="col-"] {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  /* Adjust spacing for radio buttons */
+  .form-check {
+    margin-bottom: 0;
+    min-height: auto;
+    padding-left: 1.5em;
+  }
+  
+  /* Adjust spacing for transaction type radios */
+  .gap-4 {
+    gap: 1rem !important;
+  }
+  
+  /* Adjust spacing for buttons at the bottom */
+  .mt-4 {
+    margin-top: 15px !important;
+  }
+  
+  .mt-2 {
+    margin-top: 8px !important;
+  }
+  
+  /* Adjust spacing for the memo section */
+  textarea.form-control {
+    padding: 0.3rem 0.5rem;
+  }
+  
+  /* Adjust spacing for the call client section */
+  p.mb-2 {
+    margin-bottom: 0.4rem !important;
+    font-size: 0.85rem;
+  }
+  
+  /* Add Frutiger font */
+  @font-face {
+    font-family: "Frutiger";
+    src: local("Frutiger");
+    font-weight: normal;
+    font-style: normal;
   }
   
